@@ -1,0 +1,15 @@
+C:\Users\OspirSabrina\source\repos\MeinProjekt\bin\Debug\net9.0\MeinProjekt.exe
+C:\Users\OspirSabrina\source\repos\MeinProjekt\bin\Debug\net9.0\MeinProjekt.deps.json
+C:\Users\OspirSabrina\source\repos\MeinProjekt\bin\Debug\net9.0\MeinProjekt.runtimeconfig.json
+C:\Users\OspirSabrina\source\repos\MeinProjekt\bin\Debug\net9.0\MeinProjekt.dll
+C:\Users\OspirSabrina\source\repos\MeinProjekt\bin\Debug\net9.0\MeinProjekt.pdb
+C:\Users\OspirSabrina\source\repos\MeinProjekt\obj\Debug\net9.0\MeinProjekt.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\OspirSabrina\source\repos\MeinProjekt\obj\Debug\net9.0\MeinProjekt.AssemblyInfoInputs.cache
+C:\Users\OspirSabrina\source\repos\MeinProjekt\obj\Debug\net9.0\MeinProjekt.AssemblyInfo.cs
+C:\Users\OspirSabrina\source\repos\MeinProjekt\obj\Debug\net9.0\MeinProjekt.csproj.CoreCompileInputs.cache
+C:\Users\OspirSabrina\source\repos\MeinProjekt\obj\Debug\net9.0\MeinProjekt.sourcelink.json
+C:\Users\OspirSabrina\source\repos\MeinProjekt\obj\Debug\net9.0\MeinProjekt.dll
+C:\Users\OspirSabrina\source\repos\MeinProjekt\obj\Debug\net9.0\refint\MeinProjekt.dll
+C:\Users\OspirSabrina\source\repos\MeinProjekt\obj\Debug\net9.0\MeinProjekt.pdb
+C:\Users\OspirSabrina\source\repos\MeinProjekt\obj\Debug\net9.0\MeinProjekt.genruntimeconfig.cache
+C:\Users\OspirSabrina\source\repos\MeinProjekt\obj\Debug\net9.0\ref\MeinProjekt.dll
