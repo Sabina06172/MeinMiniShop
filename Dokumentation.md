@@ -13,7 +13,7 @@ Entwicklung einer einfachen Konsolenanwendung, mit der Produkte angezeigt, in de
 
 ---
 
-## **Tag 1:**
+## **Tag 1:** - **12.04.25**
 
 - **Ordnerstruktur**: Einen neuen Ordner namens `MeinProjekt` erstellt und die **Markdown All in One** Extension installiert.
 - **Projektvorstellung**: Eine erste Vorstellung der App gemacht und die Features definiert.
@@ -24,7 +24,7 @@ Entwicklung einer einfachen Konsolenanwendung, mit der Produkte angezeigt, in de
 
 ---
 
-## **Tag 2:**
+## **Tag 2:** - **22.04.25**
 
 Mit Hilfe von ChatGPT und eigener Recherche:
 
@@ -63,4 +63,22 @@ Am ende habe ich mich hingesetzt und den code mit meine eigene Worte erklärt.
 
 ---
 
-## **Tag 3:**
+## **Tag 3:** - **23.04.25**
+
+- **Menüpunkt 5** – Produkt aus dem Warenkorb entfernen: Einen neuen Menüpunkt hinzugefügt, um Produkte aus dem Warenkorb zu entfernen. Bei mehrfach vorhandenem Produkt wird abgefragt, ob alle oder nur eins entfernt werden soll.
+
+- **CartItem-Klasse**: Eine neue Klasse CartItem erstellt, die Quantity (Menge) neben dem Product verwaltet. Dies verhindert Duplikate im Warenkorb.
+
+- **Erweiterung Menüpunkt 2** – Produkt hinzufügen: Beim Hinzufügen wird geprüft, ob das Produkt bereits im Warenkorb liegt. Falls ja, wird die Menge erhöht; ansonsten wird ein neuer CartItem angelegt.
+
+- **Warenkorb anzeigen**: Der Warenkorb zeigt jetzt Produktname, Menge und Gesamtpreis pro Produkt an. Der Gesamtbetrag aller Produkte wird berechnet.
+
+- **Einkauf abschließen**: Der Warenkorb wird zusammengefasst und der Gesamtbetrag angezeigt, bevor er geleert wird.
+  
+  ***Im Großteil habe ich mein code verbessert und optimiert nachdem ich einen neuen Menüpunkt hinzugefügt habe - (musste auch jedes Menüpunkt angepasst werden.)***
+
+
+**Fehlerbehebung:**
+
+Beim Entfernen von Produkten aus dem Warenkorb wurde das Produkt stattdessen wieder hinzugefügt. Das Problem konnte durch das Ersetzen von + mit - und der Nutzung von .Remove behoben werden.
+
