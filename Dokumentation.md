@@ -11,6 +11,11 @@ Entwicklung einer einfachen Konsolenanwendung, mit der Produkte angezeigt, in de
   - Einkauf abschließen
   - Produkte löschen
 
+### Erweiterungen:
+- Speichern von Bestellungen in einer Datei
+- Suchfunktion
+- Rabattcode System
+  
 ---
 
 ## **Tag 1:** - **12.04.25**
@@ -67,7 +72,7 @@ Am ende habe ich mich hingesetzt und den code mit meine eigene Worte erklärt.
 
 - **Menüpunkt 5** – Produkt aus dem Warenkorb entfernen: Einen neuen Menüpunkt hinzugefügt, um Produkte aus dem Warenkorb zu entfernen. Bei mehrfach vorhandenem Produkt wird abgefragt, ob alle oder nur eins entfernt werden soll.
 
-- **CartItem-Klasse**: Eine neue Klasse CartItem erstellt, die Quantity (Menge) neben dem Product verwaltet. Dies verhindert Duplikate im Warenkorb.
+- **CartItem-Klasse**: Eine neue Klasse `CartItem` erstellt, die Quantity (Menge) neben dem Product verwaltet. Dies verhindert Duplikate im Warenkorb.
 
 - **Erweiterung Menüpunkt 2** – Produkt hinzufügen: Beim Hinzufügen wird geprüft, ob das Produkt bereits im Warenkorb liegt. Falls ja, wird die Menge erhöht; ansonsten wird ein neuer CartItem angelegt.
 
@@ -82,3 +87,29 @@ Am ende habe ich mich hingesetzt und den code mit meine eigene Worte erklärt.
 
 Beim Entfernen von Produkten aus dem Warenkorb wurde das Produkt stattdessen wieder hinzugefügt. Das Problem konnte durch das Ersetzen von + mit - und der Nutzung von .Remove behoben werden.
 
+---
+
+## **Tag 4:** - **24.04.25**
+
+- **Bestellungen als JSON speichern** – Statt wie zuvor in einer `.txt`-Datei, wird die abgeschlossene Bestellung nun automatisch beim Abschluss (Menüpunkt 4) als `.json`-Datei gespeichert. 
+
+- **Menüpunkt 6 – Suchfunktion**: Ein neuer Menüpunkt wurde erstellt, um Produkte nach Namen zu durchsuchen. Dabei wird ein Suchbegriff eingegeben und alle Produkte mit passenden Namen werden angezeigt (case-insensitive Suche über `.ToLower()` und `Contains()` via `LINQ`).
+
+- **Erweiterung Produktliste** – Die ursprüngliche Produktliste wurde mit zusätzlichen Produkten erweitert, um die Suchfunktion besser testen zu können.
+
+- **Anpassung Menüstruktur** – Das Menü wurde aktualisiert und übersichtlich erweitert, damit alle neuen Funktionen eingebunden sind.
+
+***Heute lag der Fokus auf Erweiterbarkeit und Benutzerfreundlichkeit. Dazu habe ich in W3School mir das wichtigste nochmal angeschaut und auch den Quiz am ende gemacht.***
+
+
+**Fehlerbehebung & Verbesserung:**
+
+Beim Versuch, eine Bestellung zu speichern, habe ich als erstes eine `.txt`-Datei verwendet – später auf `.json` umgestellt(nachdem ich nachgesucht habe wie das gehtt, und mir videos auf Youtube angeschaut habe), da sie besser geeignet ist. 
+Außerdem wurden `using`-Anweisungen ergänzt (`System.Text.Json`, `System.Linq`), um LINQ und JSON-Funktionalität zu nutzen. (Da ich beim `.Where` und `.List` fehler hatte und nicht wusste warum - nach einhabe von `using System.Linq` war der Fehler weg(nochmal was neues heute gelernt)).
+
+**Lernsourcen**:
+- [W3Schools](https://www.w3schools.com)
+- ChatGPT
+- [Was ist JSON](https://www.youtube.com/watch?v=BUFN0WMVW3k&t=40s)
+- [Die Arbeit mit JSON in C# vereinfachen](https://www.youtube.com/watch?v=S3hXbc0DC0Q)
+- [Using JSON in C#](https://www.youtube.com/watch?v=w6M-Bj-tfv4)
