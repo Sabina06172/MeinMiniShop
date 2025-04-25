@@ -2,7 +2,10 @@
 using System.Data;
 using MeinProjekt;
 using System.Linq; //Wird benutzt um auf .Where und .ToList zuzugreifen
-using System.Text.Json; //Wird benutzt um json datei zu erstellen
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Runtime.CompilerServices; //Wird benutzt um json datei zu erstellen
+Console.OutputEncoding = System.Text.Encoding.UTF8; // Setze die Konsolencodierung auf UTF-8, um sicherzustellen, dass Sonderzeichen korrekt angezeigt werden. In diesem Fall "€"
 
 
 
@@ -29,6 +32,13 @@ List<Product> products = new List<Product> //Neue Produkte Liste mit paar produk
 // {
 //     System.Console.WriteLine(p);
 // }
+
+Dictionary<string, decimal> dicountsCodes = new Dictionary<string, decimal>(StringComparer.OrdinalIgnoreCase) //Das StringComparer.OriginalIgnorCase ist dafür da das wenn der User das Rabattcode klein schreibt auch erkannt wird - also egal ob kleine - oder große Schreibweise!
+{
+    {"RABATT15", 0.15m}, //15% Rabatt
+    {"SPAR5", 5.00m} //5€ Rabatt
+
+};
 
 List<CartItem> cart = new List<CartItem>(); //Eine neue leere Liste - den Warenkorb
 
@@ -82,7 +92,7 @@ while (running) //while-Schleife sorgt dafür dass das Programm so lange läft b
                 }
                 else
                 {
-                    cart.Add(new CartItem { Product = selectedProduct, Quantity = 1 }); //Wenn es noch nicht in den Warenkorb ist wird es erst hinzugefügt
+                    cart.Add(new CartItem (selectedProduct, 1)); //Wenn es noch nicht in den Warenkorb ist wird es erst hinzugefügt
                     System.Console.WriteLine("Produkt wurde dem Warenkorb hinzugefügt!");
                 }
 
@@ -138,6 +148,38 @@ while (running) //while-Schleife sorgt dafür dass das Programm so lange läft b
                     System.Console.WriteLine($"{item.Quantity}x {item.Product.Name} - {UnitPrice:F2}€");
                     sum += UnitPrice; //Hier wird alles summiert
                 }
+
+                System.Console.WriteLine("\nHast du einen Rabbatcode? (j/n): "); //User wird gefragt ob er einen Rabattcode hat
+                string answer = Console.ReadLine() ?? "".ToLower();
+
+                if (answer == "j" || answer == "ja") //Wenn antwort ja - wird überprüft ob code existiert
+                {
+                    System.Console.WriteLine("Bitte gib den Rabattcode ein: ");
+                    string enteredDiscount = Console.ReadLine() ?? "";
+
+                    if (dicountsCodes.ContainsKey(enteredDiscount)) //Hier findet die überprüfung statt
+                    {
+                        decimal discountValue = dicountsCodes[enteredDiscount];
+
+                        if (discountValue < 1) //Hier wird das Prozent gerechnet - zbs. 15%
+                        {
+                            decimal discountAmount = sum * discountValue;
+                            sum -= discountAmount;
+                            System.Console.WriteLine($"Rabatt angewendet: -{discountAmount:F2}€ ({discountValue * 100}% Rabatt)");
+                        }
+                        else
+                        {
+                            sum -= discountValue; //Hier wird ein fester Betrag gerechnet - zbs. 5€
+                            if (sum < 0) sum = 0;
+                            System.Console.WriteLine($"Rabatt angewendet: -{discountValue:F2}€");
+                        }
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("Ungültiger Rabattcode."); //Ansonsten wird diese meldung angezeigt
+                    }
+                }
+
                 System.Console.WriteLine($"Gesamtbetrag: {sum:F2}€");
                 // orderLines.Add(new string('-', 30)); //Trenner damit die Bestellungen übersicht haben
 
@@ -149,13 +191,41 @@ while (running) //while-Schleife sorgt dafür dass das Programm so lange läft b
 
                 System.Console.WriteLine("\nEinkauf abgeschlossen. Vielen Dank!"); //Wenn User 4 eingibt wird der Einkauf abgeschlossen und diese meldung angezeigt
 
-                //Bestellung als JSON speichern:
-                string path = "order.json"; //Erstellung der Datei - bzw den Namen der datei
-                string json = JsonSerializer.Serialize(cart, new JsonSerializerOptions { WriteIndented = true }); //JsonSerializer.Serialize(...) Das ist eine Methode aus System.Text.Json, die ein C#-Objekt (z. B. eine Liste oder ein Warenkorb) in einen JSON-Text umwandelt.
-                                                                                                                  //new JsonSerializerOptions { WriteIndented = true } Diese Option sorgt dafür, dass das JSON lesbar (formatiert) geschrieben wird – also mit Einrückungen.
-                File.WriteAllText(path, json); //File.WriteAllText(...) Schreibt den Text in eine Datei. Wenn die Datei nicht existiert, wird sie erstellt. Wenn sie existiert, wird sie überschrieben.
-                System.Console.WriteLine($"Bestellung wurde gespeichert als: {path}"); //Wird angezeigt als was die Bestellung gespeichert wurde in diesem Fall json datei
-                cart.Clear(); //der Warenkorb wird geleert
+
+                string ordersFile = "Bestellungen"; //Ordner erstellen
+                if (!Directory.Exists(ordersFile))
+                {
+                    Directory.CreateDirectory(ordersFile);
+                }
+
+                string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"); //Zeitstempel für fileName
+                string fileName = Path.Combine(ordersFile, $"bestellung_{timestamp}.json"); //Vollständiger pfad zur Datei
+
+                var bestellung = new
+                {
+                    Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    Gesamtbetrag = sum,
+                    Artikel = cart.Select(item => new
+                    {
+                        Produkt = item.Product.Name,
+                        Einzelpreis = item.Product.Price,
+                        Menge = item.Quantity,
+                        Gesamtpreis = item.Product.Price * item.Quantity
+                    }).ToList()
+                };
+
+                string json = JsonSerializer.Serialize(bestellung, new JsonSerializerOptions{WriteIndented = true});
+                File.WriteAllText(fileName, json);
+                System.Console.WriteLine($"Bestellung wurde gespeichert als: {fileName}");
+                cart.Clear();
+
+                // //Bestellung als JSON speichern:
+                // string path = "order.json"; //Erstellung der Datei - bzw den Namen der datei
+                // string json = JsonSerializer.Serialize(cart, new JsonSerializerOptions { WriteIndented = true }); //JsonSerializer.Serialize(...) Das ist eine Methode aus System.Text.Json, die ein C#-Objekt (z. B. eine Liste oder ein Warenkorb) in einen JSON-Text umwandelt.
+                //                                                                                                   //new JsonSerializerOptions { WriteIndented = true } Diese Option sorgt dafür, dass das JSON lesbar (formatiert) geschrieben wird – also mit Einrückungen.
+                // File.WriteAllText(path, json); //File.WriteAllText(...) Schreibt den Text in eine Datei. Wenn die Datei nicht existiert, wird sie erstellt. Wenn sie existiert, wird sie überschrieben.
+                // System.Console.WriteLine($"Bestellung wurde gespeichert als: {path}"); //Wird angezeigt als was die Bestellung gespeichert wurde in diesem Fall json datei
+                // cart.Clear(); //der Warenkorb wird geleert
             }
             break;
 

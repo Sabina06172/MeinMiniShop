@@ -113,3 +113,40 @@ Außerdem wurden `using`-Anweisungen ergänzt (`System.Text.Json`, `System.Linq`
 - [Was ist JSON](https://www.youtube.com/watch?v=BUFN0WMVW3k&t=40s)
 - [Die Arbeit mit JSON in C# vereinfachen](https://www.youtube.com/watch?v=S3hXbc0DC0Q)
 - [Using JSON in C#](https://www.youtube.com/watch?v=w6M-Bj-tfv4)
+
+---
+
+## **Tag 5:** - **25.04.25**
+
+- **Rabattcode-System:** - Vor dem Abschluss einer Bestellung kann ein Rabattcode eingegeben werden. Wird ein gültiger Code erkannt (z. B. RABATT15), wird der Gesamtbetrag entsprechend reduziert. 
+
+- **JSON-Dateispeicherung verbessert:** - Statt order.json wird nun bei jeder abgeschlossenen Bestellung eine eigene Datei im Bestellungen-Ordner erzeugt – benannt mit Datum und Uhrzeit.
+ ***Die gespeicherte Datei enthält:***
+
+  - Liste aller bestellten Artikel mit Name, Einzelpreis, Menge und Gesamtpreis
+
+- **CartItem-Klasse erweitert:** - Es wurde einen Konstruktor definiert da in der Console eine Warnung angezeit war. Durch den Konstruktor war diese auch weg. Danach mussten die Stellen im Code angepasst werden, wo neue CartItem-Objekte erstellt wurden.
+
+**Fehlerbehebung & Verbesserung:**
+
+ - In der Konsole wurde das Euro-Zeichen als Fragezeichen (?) angezeigt. Nach viel rumprobieren und Recherche wurde die Lösung gefunden:
+- ***In Program.cs wurde die folgende Zeile eingefügt:***
+
+```csharp
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+```
+Danach wurde das Eurozeichen korrekt dargestellt.
+
+***Heute habe ich meinen Code besser strukturiert und die Logik robuster gemacht, vor allem beim Speichern und Bearbeiten der Bestellungen.***
+
+
+**Lernsourcen**:
+
+- ChatGPT
+- [Google](https://www.bing.com/search?pglt=2083&q=dictionary+c%23&cvid=ff56d98c36e6416286610a49bbdc7563&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEAyCAgJEOkHGPxV0gEINjEzMGowajGoAgCwAgA&FORM=ANNAB1&PC=U531)
+- [C# Dictionary kurz und einfach erklärt](https://www.youtube.com/watch?v=D02oPfxYfDU)
+- [C# Tutorial for Beginners - Dictionary](https://www.youtube.com/watch?v=7g5KySGavUI)
+
+---
+
+## **Tag 6:** - **28.04.25**

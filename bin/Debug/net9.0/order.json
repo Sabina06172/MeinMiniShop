@@ -1,22 +1,8 @@
 [
   {
     "Product": {
-      "Name": "Socken",
-      "Price": 5.99
-    },
-    "Quantity": 1
-  },
-  {
-    "Product": {
-      "Name": "Schal",
-      "Price": 11.99
-    },
-    "Quantity": 1
-  },
-  {
-    "Product": {
-      "Name": "Sonnenbrille",
-      "Price": 25.99
+      "Name": "Kapuzenpulli",
+      "Price": 29.99
     },
     "Quantity": 1
   }
