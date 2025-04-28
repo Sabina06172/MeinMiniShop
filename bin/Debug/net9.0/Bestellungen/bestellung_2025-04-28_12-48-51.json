@@ -1,0 +1,18 @@
+{
+  "Date": "2025-04-28 12:48:51",
+  "Gesamtbetrag": 574.48,
+  "Artikel": [
+    {
+      "Produkt": "Kaffeemaschine",
+      "Einzelpreis": 79.49,
+      "Menge": 1,
+      "Gesamtpreis": 79.49
+    },
+    {
+      "Produkt": "XBOX Series X",
+      "Einzelpreis": 499.99,
+      "Menge": 1,
+      "Gesamtpreis": 499.99
+    }
+  ]
+}

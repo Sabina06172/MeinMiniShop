@@ -150,3 +150,46 @@ Danach wurde das Eurozeichen korrekt dargestellt.
 ---
 
 ## **Tag 6:** - **28.04.25**
+
+
+- **Erstellung der `Category`-Klasse:**  
+  Eine neue `Category`-Klasse wurde erstellt, um Kategorien von Produkten zu verwalten. Jede Kategorie enthält einen Namen und eine Liste von Produkten. Es wurde eine Methode `AddProduct` hinzugefügt, die es ermöglicht, Produkte zu einer Kategorie hinzuzufügen.
+
+- **Änderungen in `Program.cs`:**  
+  Änderungen an der `Program.cs`-Datei wurden notwendig, um sicherzustellen, dass die Kategorien und Produkte korrekt angezeigt werden. Dies beinhaltete das Erstellen der Produkt- und Kategorie-Objekte und deren Integration in das Hauptprogramm. Die Benutzeroberfläche wurde entsprechend angepasst, um die Auswahl und Anzeige von Produkten aus verschiedenen Kategorien zu ermöglichen.
+
+- **Verbesserung von Menüpunkt 6 (Suche):**  
+  Der Menüpunkt für die Produktsuche wurde verbessert. Eine kleine Such-Animation wurde hinzugefügt, um dem Benutzer eine visuelle Rückmeldung während der Suche zu geben. Zudem wurden Farben verwendet, um das Benutzererlebnis zu verbessern:  
+  - **Rot** für Fehlermeldungen (z. B. wenn keine Produkte gefunden wurden)  
+  - **Grün** für erfolgreiche Suchergebnisse.
+
+- **Begrüßungstext eingefügt:**  
+  Beim Start des Programms wird nun ein Begrüßungstext angezeigt, der dem Benutzer einen freundlichen Einstieg in die Anwendung bietet.
+
+- **Warenkorb tabellarisch angezeigt:**  
+  Der Warenkorb wird nun tabellarisch dargestellt, um eine bessere Übersichtlichkeit zu gewährleisten. Es wurden Trennlinien verwendet, um die einzelnen Produkte und deren Preise klar voneinander abzugrenzen.
+
+- **Menü optisch verbessert:**  
+  Das Menü wurde optisch gestaltet, indem Trennlinien eingefügt wurden und eine Überschrift hinzugefügt wurde.
+
+**Fehlerbehebung & Verbesserung:**
+
+- **Probleme mit der `Category`-Klasse und `Program.cs`:**  
+  Es traten Fehler auf, als die `Category`-Klasse und deren Integration in `Program.cs` nicht wie erwartet funktionierten. Um diese Fehler zu beheben, wurde der Konstruktor der `Category`-Klasse angepasst, und es wurden Änderungen in `Program.cs` vorgenommen, um die Produkte und Kategorien korrekt darzustellen.
+  Das war eine Herausforderung da man schön viel umstrukturieren musste damit alles wieder funktioniert.
+
+- **Fehlerbehebung beim Konstruktor der `Category`-Klasse:**  
+  Es wurde ein Fehler in der `Category`-Klasse behoben, der beim Hinzufügen von Produkten zu Kategorien auftrat. Der Konstruktor der `Category`-Klasse wurde angepasst, um sowohl den Namen der Kategorie als auch eine Liste von Produkten zu akzeptieren, anstatt nur den Namen der Kategorie. Dadurch konnten Produkte direkt bei der Erstellung einer Kategorie hinzugefügt werden.
+
+
+***Heute habe ich die `Category`-Klasse eingeführt, um die Verwaltung der Produkte zu verbessern. Außerdem wurden Anpassungen in der `Program.cs` vorgenommen, um die Produkte korrekt anzuzeigen und eine benutzerfreundliche Suchfunktion zu integrieren. Das Benutzererlebnis wurde durch die Such-Animation, Begrüßungstexte und eine optische Verbesserung des Menüs weiter optimiert.***
+
+**Lernsourcen**:
+
+- ChatGPT
+
+**Abschließende Bemerkung:**
+
+Jeden Tag habe ich meine Konsolen-App ausprobiert und nach jeder Änderung getestet, um sicherzustellen, dass alles funktioniert. Heute habe ich außerdem noch einmal alles durchgegangen, um zu überprüfen, dass alle Änderungen korrekt umgesetzt wurden und die App stabil läuft.
+
+### **Vielen Dank!**
